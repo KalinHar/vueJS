@@ -1,10 +1,25 @@
 <template>
   <h1>{{ title }}</h1>
+
   <div v-if="showModal">
-    <Modal :header="header" :text="text" :theme="text" @close="toggleModal" />
+    <Modal @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">Sign up now</a>
+        <a href="#">more info</a>
+        <p>{{ text }}</p>
+      </template>
+    </Modal>
   </div>
+
+  <div v-if="showModal2">
+    <Modal @close="toggleModal2">
+      <h1>Modal 2</h1>
+    </Modal>
+  </div>
+
   <input type="text" ref="name">
   <button @click.shift="handleClick">shift + click me</button>
+  <button @click="handleClick2">To modal 2</button>
 </template>
 
 <script>
@@ -16,9 +31,9 @@ export default {
   data() {
     return {
       title: 'My First App :)',
-      header: 'This header from props',
-      text: 'custom text',
-      showModal: false
+      text: "",
+      showModal: false,
+      showModal2: false,
     }
   },
   methods: {
@@ -26,8 +41,14 @@ export default {
       this.text = this.$refs.name.value
       this.toggleModal()
     },
+    handleClick2() {
+      this.toggleModal2()
+    },
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModal2() {
+      this.showModal2 = !this.showModal2
     }
   }
 }

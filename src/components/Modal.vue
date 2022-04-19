@@ -1,11 +1,10 @@
 <template>
     <div class="backdrop" @click.self="closeModal">
         <div class="modal">
-            <slot>Secondary Modal</slot>
+            <slot>Primary Modal</slot>
             <div class="actions">
                 <slot name="links"></slot>
             </div>
-
         </div>
     </div>
 </template>
@@ -18,7 +17,6 @@
             }
         }
     }
-
 </script>
 
 <style>
@@ -43,5 +41,4 @@
     .modal p {
         font-style: normal;
     }
-
 </style>

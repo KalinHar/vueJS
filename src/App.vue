@@ -1,7 +1,7 @@
 <template>
   <h1>{{ title }}</h1>
 
-  <div v-if="showModal">
+  <teleport to=".modals"  v-if="showModal">
     <Modal @close="toggleModal">
       <template v-slot:links>
         <a href="#">Sign up now</a>
@@ -9,13 +9,13 @@
         <p>{{ text }}</p>
       </template>
     </Modal>
-  </div>
+  </teleport>
 
-  <div v-if="showModal2">
+  <teleport to=".modals" v-if="showModal2">
     <Modal @close="toggleModal2">
       <h1>Modal 2</h1>
     </Modal>
-  </div>
+  </teleport>
 
   <input type="text" ref="name">
   <button @click.shift="handleClick">shift + click me</button>
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style>
-#app {
+#app, .modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
